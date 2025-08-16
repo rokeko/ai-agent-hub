@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nvidia Investment Analysis - Visualized Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0d1b2a;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            border-bottom: 3px solid #778da9;
+        }
+        .summary {
+            background-color: #e0e1dd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #415a77;
+            margin-bottom: 30px;
+        }
+        .summary h2 {
+            margin-top: 0;
+            border: none;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #415a77;
+            border: none;
+        }
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+        .conflict-zone {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: #fff0f0;
+            border: 2px dashed #d00000;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .conflict-zone .profile, .conflict-zone .investment {
+            text-align: center;
+        }
+        .conflict-zone .arrow {
+            font-size: 3em;
+            color: #d00000;
+        }
+        .recommendations {
+            margin-top: 30px;
+        }
+        .rec-card {
+            background: #f1faee;
+            border-left: 5px solid #457b9d;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .rec-card.caution {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+        .rec-card.stop {
+            background: #ffebee;
+            border-left-color: #c62828;
+        }
+        .rec-card h3 {
+            margin-top: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Investment Analysis: Nvidia (NVDA)</h1>
+
+        <div class="summary">
+            <h2>Executive Summary: Strong Recommendation Against</h2>
+            <p>The analysis concludes that a significant investment in individual Nvidia stock is <strong>not aligned with your investor profile</strong>. The risks associated with the investment's volatility, your knowledge gap, and the proposed portfolio concentration are too high given your stated goals and risk tolerance.</p>
+        </div>
+
+        <h2>Your Investor Profile at a Glance</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Knowledge of Semiconductor Industry</h3>
+                <div class="chart-container">
+                    <canvas id="knowledgeChart"></canvas>
+                </div>
+                <p><strong>Your Rating: 3 / 10</strong><br>This falls outside your "Circle of Competence."</p>
+            </div>
+            <div class="card">
+                <h3>Maximum Risk Tolerance</h3>
+                <div class="chart-container">
+                    <canvas id="riskChart"></canvas>
+                </div>
+                <p><strong>Your Limit: 10% Loss</strong><br>A volatile stock like NVDA can easily exceed this.</p>
+            </div>
+            <div class="card">
+                <h3>Proposed Portfolio Allocation</h3>
+                <div class="chart-container">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+                <p><strong>25% in a single stock</strong> is a highly concentrated, high-risk position.</p>
+            </div>
+        </div>
+
+        <h2>The Core Conflict: Your Profile vs. The Investment</h2>
+        <div class="conflict-zone">
+            <div class="profile">
+                <h3>Your Profile</h3>
+                <p>✔️ Low Risk<br>✔️ Novice Investor<br>✔️ Seeks Wealth Preservation</p>
+            </div>
+            <div class="arrow">➔ ❌ ￩</div>
+            <div class="investment">
+                <h3>Nvidia Investment</h3>
+                <p>🔥 High Volatility<br>🔥 Requires Expert Knowledge<br>🔥 Speculative Characteristics</p>
+            </div>
+        </div>
+
+        <h2>Mental Model Analysis: A 3-Lens Verdict</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>1. Circle of Competence</h3>
+                <p>This investment is clearly <strong>OUTSIDE</strong> your circle of knowledge.</p>
+                <div style="font-size: 4em; color: #c62828;">🚫</div>
+                <h4>Verdict: Stop</h4>
+            </div>
+            <div class="card">
+                <h3>2. Bubbles</h3>
+                <p>The stock shows classic signs of a speculative bubble, posing a high risk of correction.</p>
+                <div style="font-size: 4em; color: #ff9800;">⚠️</div>
+                <h4>Verdict: High Caution</h4>
+            </div>
+            <div class="card">
+                <h3>3. Social Proof</h3>
+                <p>The desire to invest is strongly influenced by herd behavior, not independent analysis.</p>
+                <div style="font-size: 4em; color: #c62828;">🚫</div>
+                <h4>Verdict: Stop</h4>
+            </div>
+        </div>
+
+        <h2>Actionable Recommendations: Your Path Forward</h2>
+        <div class="recommendations">
+            <div class="rec-card stop">
+                <h3>1. STRONGLY RECOMMENDED: Do Not Invest in Individual NVDA Stock</h3>
+                <p>This is the most prudent choice. It aligns with all analysis findings and protects your capital from undue risk.</p>
+            </div>
+            <div class="rec-card">
+                <h3>2. RECOMMENDED ALTERNATIVE: Gain Exposure Through Diversification</h3>
+                <p>If you want to participate in tech growth, consider a diversified ETF (e.g., an S&P 500 or NASDAQ-100 fund). This spreads risk and doesn't require you to be an expert on any single company.</p>
+            </div>
+            <div class="rec-card caution">
+                <h3>3. LONG-TERM PATH: Commit to Expanding Your Circle of Competence</h3>
+                <p>If you are passionate about stock picking, take the time (months, not days) to learn deeply before investing real money. Study financials, competitive landscapes, and valuation methods.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart for Knowledge Level
+        new Chart(document.getElementById('knowledgeChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Knowledge Gap', 'Your Knowledge'],
+                datasets: [{
+                    data: [7, 3],
+                    backgroundColor: ['#e0e0e0', '#415a77'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+
+        // Chart for Risk Tolerance
+        new Chart(document.getElementById('riskChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Portfolio Value', 'Acceptable Loss'],
+                datasets: [{
+                    data: [90, 10],
+                    backgroundColor: ['#a5d6a7', '#ef5350'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+
+        // Chart for Allocation
+        new Chart(document.getElementById('allocationChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Rest of Portfolio', 'Proposed NVDA Investment'],
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: ['#e0e0e0', '#d00000'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Report: HKU vs. Stanford Decision</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1, h2, h3 {
+            color: #1a1a1a;
+            margin-top: 1.2em;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .summary {
+            background-color: #eef7ff;
+            border-left: 5px solid #007bff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        .stanford { background-color: #fffaf0; }
+        .hku { background-color: #f0faff; }
+        .risk-section {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .risk-chart {
+            flex: 1;
+            padding: 20px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+         .risk-desc {
+            flex: 1;
+        }
+        .recommendation {
+            background-color: #e6ffed;
+            border-left: 5px solid #28a745;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+        .accordion {
+            margin-top: 20px;
+        }
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background-color: #f7f7f7;
+            padding: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5em;
+            color: #007bff;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Adjust as needed */
+            padding: 15px;
+        }
+        .accordion-item.active .accordion-header::after {
+            content: '−';
+        }
+         ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        .tag-red { background-color: #ffdde0; color: #d90012; }
+        .tag-blue { background-color: #ddebff; color: #0045a3; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Analysis Report: HKU vs. Stanford Decision</h1>
+
+        <div class="summary">
+            <strong>Executive Summary:</strong> For a risk-averse individual concerned about geopolitical tensions, <strong>Stanford University</strong> is the more prudent choice. The risks associated with Stanford are primarily procedural (post-graduation visas) and can be mitigated. In contrast, the risks at HKU are systemic, political, and largely uncontrollable, posing a greater threat to the overall university experience and long-term value of the degree.
+        </div>
+
+        <h2>Side-by-Side Comparison</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Stanford University</th>
+                    <th>Hong Kong University (HKU)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>First-Order Consequence</strong></td>
+                    <td class="stanford">World-class education in Silicon Valley with direct access to US tech recruiters.</td>
+                    <td class="hku">Top-tier Asian university, serving as a gateway to mainland China's tech scene.</td>
+                </tr>
+                <tr>
+                    <td><strong>Second-Order Consequence (Ripple Effects)</strong></td>
+                    <td class="stanford">Strong US network but high uncertainty of securing an H-1B visa post-graduation.</td>
+                    <td class="hku">Strong Asian network, but risk of political deterioration impacting academic freedom and quality of life.</td>
+                </tr>
+                <tr>
+                    <td><strong>Worst-Case Scenario (Inversion)</strong></td>
+                    <td class="stanford">"Visa Hell": Graduating with a top-tier degree but being forced to leave the US, making the network less valuable for a career in China.</td>
+                    <td class="hku">Collapse of Hong Kong's autonomy, leading to a restricted environment, a devalued degree, and diminished job prospects.</td>
+                </tr>
+                <tr>
+                    <td><strong>Opportunity Cost (What's Given Up)</strong></td>
+                    <td class="stanford">Giving up a direct, early entry into the Asian tech market.</td>
+                    <td class="hku">Giving up the unparalleled prestige of a Stanford degree and exposing oneself to significant political risk.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Risk Analysis (Tolerance: 2/5)</h2>
+        <div class="risk-section">
+            <div class="risk-desc">
+                <h3>The Nature of the Risks</h3>
+                <p>The decision hinges not on the existence of risks, but on their fundamental nature.</p>
+                <ul>
+                    <li><strong style="color: #c26c02;">Stanford Risk: <span class="tag tag-blue">Bureaucratic Hurdle</span></strong><br>The primary risk is failing the H-1B visa lottery. This is a known, procedural challenge that impacts post-graduation logistics but not the quality of the education itself. It can be planned for.</li>
+                    <li><strong style="color: #d90012;">HKU Risk: <span class="tag tag-red">Systemic Political Drift</span></strong><br>The primary risk is the erosion of Hong Kong's autonomy and freedoms. This is an unknown, systemic threat that could affect daily life, academic integrity, and personal safety. It is largely uncontrollable.</li>
+                </ul>
+                <p>For a risk-averse person, the controllable, bureaucratic risk is preferable to the uncontrollable, systemic one.</p>
+            </div>
+            <div class="risk-chart">
+                 <canvas id="riskChart"></canvas>
+            </div>
+        </div>
+
+
+        <h2>Mental Model Deep Dive</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">Model 1: Second-Order Thinking (What are the ripple effects?)</div>
+                <div class="accordion-content">
+                    <p>This model explores the chain of consequences beyond the immediate effects.</p>
+                    <strong>Stanford Path:</strong>
+                    <ul>
+                        <li><strong>1st Order:</strong> Premier education in Silicon Valley.</li>
+                        <li><strong>2nd Order:</strong> Strong US network but face H-1B visa lottery post-graduation.</li>
+                        <li><strong>3rd Order:</strong> Visa failure could force a return to China, making the US-centric network less valuable and requiring a career pivot.</li>
+                    </ul>
+                    <strong>HKU Path:</strong>
+                     <ul>
+                        <li><strong>1st Order:</strong> Excellent education at a gateway to Asia.</li>
+                        <li><strong>2nd Order:</strong> Strong Asia network, but rising political tension could degrade the environment.</li>
+                        <li><strong>3rd Order:</strong> A decline in Hong Kong's autonomy could devalue the degree and lead to a desire to emigrate later, facing new visa hurdles without a strong Western network.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Model 2: Inversion (How could this go disastrously wrong?)</div>
+                <div class="accordion-content">
+                    <p>By imagining the worst possible outcomes, we can identify the most critical risks to avoid.</p>
+                    <strong>Guaranteed Failure at Stanford:</strong>
+                    <ul>
+                        <li>Graduate into "visa hell," failing the H-1B lottery until your right to work expires.</li>
+                        <li>Geopolitical tensions lead to hostility and make it impossible to secure a good job.</li>
+                        <li>The high-pressure environment leads to social isolation and burnout.</li>
+                    </ul>
+                    <strong>Guaranteed Failure at HKU:</strong>
+                    <ul>
+                        <li>Hong Kong's freedoms and autonomy collapse, making the environment oppressive and unsafe.</li>
+                        <li>The university's international reputation plummets, devaluing your degree.</li>
+                        <li>The city's status as a tech hub evaporates, leaving you with few local job prospects.</li>
+                    </ul>
+                    <p><strong>Conclusion:</strong> The failure path for HKU is more severe as it involves personal freedom and a systemic decline, which aligns with the fears of a risk-averse person.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Model 3: Trade-offs & Opportunity Cost (What am I giving up?)</div>
+                <div class="accordion-content">
+                     <p>This model clarifies the explicit choice being made and what is sacrificed with either option.</p>
+                    <strong>If you choose Stanford, you trade:</strong>
+                    <ul>
+                        <li><strong>Gains:</strong> Unparalleled prestige, Silicon Valley access, top-tier US network.</li>
+                        <li><strong>Forfeits:</strong> An early, deep entry into the Asian tech market.</li>
+                    </ul>
+                     <strong>If you choose HKU, you trade:</strong>
+                     <ul>
+                        <li><strong>Gains:</strong> Gateway to Asia, regional expertise, vibrant international city.</li>
+                        <li><strong>Forfeits:</strong> Stanford's prestige and, more importantly, a stable, free academic environment.</li>
+                    </ul>
+                    <p><strong>Conclusion:</strong> For a risk-averse person, trading away a stable and free environment (by choosing HKU) is a much higher and more dangerous price to pay than trading away a specific career strategy (by choosing Stanford).</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="recommendation">
+            <h2>Primary Recommendation: Choose Stanford</h2>
+            <p><strong>Rationale:</strong> This choice aligns with a risk-averse profile by prioritizing a stable and free academic environment. The degree's prestige offers a strong foundation regardless of future career location.</p>
+            <h3>Mitigation Strategy:</h3>
+            <p>To counter the primary risk of visa uncertainty, you must be proactive:</p>
+            <ol>
+                <li><strong>Network Globally:</strong> Actively build connections in both the US and Asian offices of multinational tech companies.</li>
+                <li><strong>Develop Portable Skills:</strong> Focus on skills that are in high demand globally, not just in the US market.</li>
+                <li><strong>Have a "Plan B":</strong> From day one, research and prepare for alternative paths if an H-1B visa is not secured. This could include graduate school, seeking employment in other countries (e.g., Canada, UK), or targeting roles in the Asian offices of US companies.</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Accordion functionality
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    // Close other items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Chart.js visualization
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            const riskChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Stanford Risk', 'HKU Risk'],
+                    datasets: [{
+                        label: 'Risk Impact/Controllability',
+                        data: [4, 9], // Arbitrary values to show relative difference
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 99, 132, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                             ticks: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Risk Profile: Bureaucratic vs. Systemic'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html> 
