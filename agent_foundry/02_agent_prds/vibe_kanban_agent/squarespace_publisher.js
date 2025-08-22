@@ -1,6 +1,8 @@
 const axios = require('axios');
 
-// TODO: Replace with your Squarespace API key and blog page ID
+// TODO: Implement OAuth 2.0 for Squarespace API authentication
+// This will involve a more complex setup with redirect URLs and authorization codes.
+// For now, we will keep the API key as a placeholder.
 const SSquarespaceApiKey = 'YOUR_SQUARESPACE_API_KEY';
 const SSquarespacePageId = 'YOUR_SQUARESPACE_PAGE_ID';
 

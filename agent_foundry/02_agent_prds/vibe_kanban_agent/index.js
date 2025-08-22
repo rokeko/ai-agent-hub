@@ -2,6 +2,7 @@ const express = require('express');
 const { readObsidianVault } = require('./obsidian_reader');
 const { transformToHtml } = require('./transformer');
 const { postToSquarespace } = require('./squarespace_publisher');
+const { watchObsidianVault } = require('./obsidian_watcher');
 
 const app = express();
 const port = 3000;
@@ -12,7 +13,8 @@ const vaultPath = '/path/to/your/obsidian/vault';
 app.use(express.static('public'));
 app.use(express.json()); // To parse JSON request bodies
 
-app.get('/api/kanban', async (req, res) => {
+// Function to process Obsidian vault content
+async function processObsidianContent() {
   const fileContents = await readObsidianVault(vaultPath);
   const kanbanData = {
     'To Do': [],
@@ -30,7 +32,11 @@ app.get('/api/kanban', async (req, res) => {
       kanbanData['Done'].push({ content: transformToHtml(content) });
     }
   });
+  return kanbanData;
+}
 
+app.get('/api/kanban', async (req, res) => {
+  const kanbanData = await processObsidianContent();
   res.json(kanbanData);
 });
 
@@ -50,4 +56,11 @@ app.post('/api/publish', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Vibe Kanban agent listening at http://localhost:${port}`);
+  // Start watching the Obsidian vault for changes
+  watchObsidianVault(vaultPath, async (eventType, filePath) => {
+    console.log(`File ${filePath} ${eventType}`);
+    // In a real application, you would re-process the content and update the frontend
+    // For now, we just log the change.
+    // You might want to trigger a re-render of the Kanban board here.
+  });
 });
